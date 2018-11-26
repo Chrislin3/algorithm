@@ -1,6 +1,7 @@
 <?php
 header("content-type:text/html;charset=utf-8");
 /* 堆排
+ * 时间复杂度：O(N * logN);额外空间复杂度O（1）
  * */
 function heapSort(&$arr){
     if($arr==null || count($arr)<2){
