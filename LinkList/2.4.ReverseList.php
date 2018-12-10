@@ -25,7 +25,7 @@ function reverseSingleList($head){
         $pre = $cur;
         $cur = $next;
     }
-    return $pre;
+    return $pre;  //注意这里返回的是pre，不是pHead ！！！！！！
 }
 
 class DoubleNode{
