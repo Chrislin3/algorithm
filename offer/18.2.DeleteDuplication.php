@@ -17,14 +17,27 @@ function deleteDuplication($pHead)
         return $pHead;
     }
 
-    $cur = $pHead;
     $next = $pHead->next;
 
-    while ($cur != null && $next != null){
-        if($cur->val == $next->val){
-
+    if($pHead->val == $next->val){  //若头结点与相邻的节点相等，就一直向下遍历到不等的地方，此时next就指向不等的结点
+        while ($next != null && $pHead->val == $next->val){
+            $next = $next->next;
         }
-
+        return deleteDuplication($next); //以该不等的结点为头，继续向下遍历
+    }
+    else{
+        $pHead->next = deleteDuplication($pHead->next);//若头结点与相邻的节点不等，那就看下一个结点。
     }
 
+    return $pHead;
+
 }
+
+$head = new ListNode(1);
+$head->next = new ListNode(1);
+$head->next->next = new ListNode(2);
+$head->next->next->next = new ListNode(3);
+$head->next->next->next->next = new ListNode(3);
+$head->next->next->next->next->next = new ListNode(4);
+$head->next->next->next->next->next->next = new ListNode(5);
+print_r(deleteDuplication($head));
