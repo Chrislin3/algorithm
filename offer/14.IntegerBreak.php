@@ -1,7 +1,7 @@
 <?php
 header("content-type:text/html;charset=utf-8");
 /*
- * 剪绳子 P96
+ * 剪绳子 把一根绳子剪成多段，并且使得每段的长度乘积最大。 P96
  */
 
 //动态规划
