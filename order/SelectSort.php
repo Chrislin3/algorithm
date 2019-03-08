@@ -6,7 +6,7 @@ header("content-type:text/html;charset=utf-8");
  * 时间复杂度：O（N^2）;额外空间复杂度O（1）
  * */
 
-function selectSort(&$arr){
+function selectSort1($arr){
     if($arr == null || count($arr)<2){
         return true;
     }
@@ -21,6 +21,25 @@ function selectSort(&$arr){
         swap($arr,$minIndex,$start);//将最小值移到开始的位置
 
     }
+    return $arr;
+}
+
+function selectSort2($arr){
+    if($arr == null || count($arr)<2){
+        return true;
+    }
+    for($start = 0;$start < count($arr);$start++){
+        $minIndex = $start;
+        for($i = $start;$i < count($arr);$i++){
+            if($arr[$i] < $arr[$minIndex]){
+                $minIndex = $i;
+            }
+        }
+        if($start != $minIndex){
+            swap($arr,$start,$minIndex);
+        }
+    }
+    return $arr;
 }
 
 
@@ -32,5 +51,5 @@ function swap(&$arr,$i,$j){  //注意这里引用变量的使用
 }
 
 $arr = [2,33,45,22,64,67,12,1,0,9];
-selectSort($arr);
-print_r($arr);//结果：Array ( [0] => 0 [1] => 1 [2] => 2 [3] => 9 [4] => 12 [5] => 22 [6] => 33 [7] => 45 [8] => 64 [9] => 67 )
+$arr2 = selectSort2($arr);
+print_r($arr2);//结果：Array ( [0] => 0 [1] => 1 [2] => 2 [3] => 9 [4] => 12 [5] => 22 [6] => 33 [7] => 45 [8] => 64 [9] => 67 )
